@@ -20,3 +20,8 @@ with open('calls.csv', 'r') as f:
 "Last record of calls, <incoming number> calls <answering number> at time <time>, lasting <during> seconds"
 """
 
+text_record = texts[0]
+print("First record of texts, {} texts {} at time {}".format(text_record[0], text_record[1], text_record[2]))
+
+call_record = calls[-1]
+print("Last record of calls, {} calls {} at time {}, lasting {} seconds".format(call_record[0], call_record[1], call_record[2], call_record[3]))

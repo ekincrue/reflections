@@ -23,3 +23,19 @@ September 2016.".
 如果键不存在于字典内，将此键加入字典，并将它的值设为给定值。
 """
 
+total = {}
+
+for number in calls:
+
+    if number[0] in total:
+        total[number[0]] += int(number[3])
+    else:
+        total[number[0]] = int(number[3])
+
+    if number[1] in total:
+        total[number[1]] += int(number[3])
+    else:
+        total[number[1]] = int(number[3])
+
+result = sorted(total.items(), key = lambda x:x[1], reverse = True)[0]
+print("{} spent the longest time, {} seconds, on the phone during September 2016.".format(result[0], result[1]))

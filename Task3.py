@@ -39,3 +39,24 @@ with open('calls.csv', 'r') as f:
 to other fixed lines in Bangalore."
 注意：百分比应包含2位小数。
 """
+
+def get_number_prefix(number):
+
+    prefix = '000'
+
+    if ' ' in number:
+        prefix = number.split( )[0]
+
+    if "(" in number and ")" in number:
+        prefix = number[number.find('(') + 1:number.find(')')]
+
+    return prefix
+
+list = {}
+
+for number in calls:
+
+    if "(080)" in number[0]:
+        list[number[1]] = get_number_prefix(number[1])
+
+print(len(list))

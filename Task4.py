@@ -26,3 +26,27 @@ with open('calls.csv', 'r') as f:
 电话号码不能重复，每行打印一条，按字典顺序排序后输出。
 """
 
+send_text = []
+receive_text = []
+
+send_call = []
+receive_call = []
+result = []
+
+for text_number in texts:
+    send_text.append(text_number[0])
+    receive_text.append(text_number[1])
+
+for call_number in calls:
+    send_call.append(call_number[0])
+    receive_call.append(call_number[1])
+
+for call in send_call:
+    if call in send_text or call in receive_text or call in receive_call:
+        continue
+    result.append(call)
+
+print("These numbers could be telemarketers: ")
+
+for line in set(result):
+    print(line)
