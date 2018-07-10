@@ -48,5 +48,5 @@ for call in send_call:
 
 print("These numbers could be telemarketers: ")
 
-for line in set(result):
+for line in sorted(set(result)):
     print(line)
