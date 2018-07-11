@@ -40,23 +40,24 @@ to other fixed lines in Bangalore."
 注意：百分比应包含2位小数。
 """
 
-def get_number_prefix(number):
-
-    prefix = '000'
-
-    if ' ' in number:
-        prefix = number.split( )[0]
-
-    if "(" in number and ")" in number:
-        prefix = number[number.find('(') + 1:number.find(')')]
-
-    return prefix
-
-list = {}
+list = []
+ban_list = []
 
 for number in calls:
+    if '(080)' in number[0]:
 
-    if "(080)" in number[0]:
-        list[number[1]] = get_number_prefix(number[1])
+        if ' ' in number[1]:
+            list.append(number[1].split( )[0])
 
-print(len(list))
+        if '(' in number[1] and ')' in number[1]:
+            list.append(number[1][number[1].find('(') + 1:number[1].find(')')])
+
+        if '(080)' in number[1]:
+            ban_list.append(number[1])
+
+print("The numbers called by people in Bangalore have codes:")
+for line in sorted(set(list)):
+    print(line)
+
+percent = round((len(ban_list) / len(list)) * 100, 2)
+print("{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(percent))
